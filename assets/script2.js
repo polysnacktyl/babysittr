@@ -1,4 +1,4 @@
-mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
+// mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
 
 // var location = userInput;
 
