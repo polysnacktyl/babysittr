@@ -1,4 +1,8 @@
-mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
+// mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
+
+// var location = userInput;
+
+
 function restaurants() {
     var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(restaurantsUrl)
@@ -8,6 +12,7 @@ function restaurants() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -22,6 +27,7 @@ function aquariums() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -36,6 +42,7 @@ function iceCream() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -50,6 +57,7 @@ function bowling() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -64,6 +72,7 @@ function pools() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -78,6 +87,7 @@ function amusementPark() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
+                // .append(searchResults[i].name)
             }
             console.log("-----------------")
         })
@@ -89,7 +99,34 @@ iceCream()
 bowling()
 pools()
 amusementPark()
-// $('').onclick(restaurants())
+
+
+// $('').on("click", restaurants()){
+
+// }
+
+// $('').on("click", aquariums()){
+
+// }
+
+// $('').on("click", iceCream()){
+
+// }
+
+// $('').on("click", bowling()){
+
+// }
+
+// $('').on("click", pools()){
+
+// }
+
+// $('').on("click", amusementPark()){
+
+// }
+
+
+
 $(document).ready(function () {
     $("#modal").addClass("is-active");
     $("#enter-btn").click(function () {
