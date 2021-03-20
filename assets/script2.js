@@ -1,10 +1,17 @@
 // mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
 
-// var location = userInput;
+// variables for places buttons 
 
+var restaurantBtn = document.getElementById('restaurants')
+var aquariumBtn = document.getElementById('aquariums')
+var iceCreamBtn = document.getElementById('iceCream')
+var bowlingBtn = document.getElementById('bowling')
+var poolsBtn = document.getElementById('pools')
+var amusementBtn = document.getElementById('amusementParks')
 
+// call place functions based on users location
 function restaurants() {
-    var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(restaurantsUrl)
         .then(function (response) {
             return response.json();
@@ -19,7 +26,7 @@ function restaurants() {
     console.log(restaurantsUrl);
 }
 function aquariums() {
-    var aquariumsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C842205&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var aquariumsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C842205&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(aquariumsUrl)
         .then(function (response) {
             return response.json();
@@ -34,7 +41,7 @@ function aquariums() {
     console.log(aquariumsUrl);
 }
 function iceCream() {
-    var iceCreamUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581203&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var iceCreamUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581203&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(iceCreamUrl)
         .then(function (response) {
             return response.json();
@@ -49,7 +56,7 @@ function iceCream() {
     console.log(iceCreamUrl);
 }
 function bowling() {
-    var bowlingUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C793301&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var bowlingUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C793301&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(bowlingUrl)
         .then(function (response) {
             return response.json();
@@ -64,7 +71,7 @@ function bowling() {
     console.log(bowlingUrl);
 }
 function pools() {
-    var poolsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799969&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var poolsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799969&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(poolsUrl)
         .then(function (response) {
             return response.json();
@@ -79,7 +86,7 @@ function pools() {
     console.log(poolsUrl);
 }
 function amusementPark() {
-    var amusementParkUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=39.8523,+-75.0679&radius=50&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799604&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var amusementParkUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=50&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799604&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(amusementParkUrl)
         .then(function (response) {
             return response.json();
@@ -93,37 +100,9 @@ function amusementPark() {
         })
     console.log(amusementParkUrl);
 }
-restaurants()
-aquariums()
-iceCream()
-bowling()
-pools()
-amusementPark()
 
 
-// $('').on("click", restaurants()){
 
-// }
-
-// $('').on("click", aquariums()){
-
-// }
-
-// $('').on("click", iceCream()){
-
-// }
-
-// $('').on("click", bowling()){
-
-// }
-
-// $('').on("click", pools()){
-
-// }
-
-// $('').on("click", amusementPark()){
-
-// }
 
 
 
@@ -180,22 +159,34 @@ function populate() {
         $(block).addClass("column is-9 schedblock");
         timeblock.appendChild(block);
     }
-}
 
-// weather api call with place pulled from modal
-place = $("#loc").val();
-var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
-// var rainy_codes = [1183, 1186, 1189, 1192];
-function call() {
-    fetch(api)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.current.condition.code);
-            console.log(data.location.name);
-            console.log(data.current.condition.text);
-            console.log(data.current.temp_f);
-            console.log('The weather in ' + data.location.name + ' is ' + data.current.temp_f + ' and ' + data.current.condition.text + '.');
-            console.log(data);
-        });
+
+    // weather api call with place pulled from modal
+    place = $("#loc").val();
+    var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
+    // var rainy_codes = [1183, 1186, 1189, 1192];
+    function call() {
+        fetch(api)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.current.condition.code);
+                console.log(data.location.name);
+                console.log(data.current.condition.text);
+                console.log(data.current.temp_f);
+                console.log('The weather in ' + data.location.name + ' is ' + data.current.temp_f + ' and ' + data.current.condition.text + '.');
+                console.log(data);
+            });
+    }
+    call()
 }
-call()
+populate()
+
+
+// button click events to fire off place functions
+
+restaurantBtn.addEventListener('click', restaurants);
+aquariumBtn.addEventListener('click', aquariums);
+iceCreamBtn.addEventListener('click', iceCream);
+bowlingBtn.addEventListener('click', bowling);
+poolsBtn.addEventListener('click', pools);
+amusementBtn.addEventListener('click', amusementPark);
