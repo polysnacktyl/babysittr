@@ -4,5 +4,18 @@
 
 .schedblock {
     border: 1px solid darkgrey;
+    border-radius: 5px;
+}
+
+.sidebar {
+    width: 25%;
+    float: right;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.draggable {
+    margin: 10px;
 }
 

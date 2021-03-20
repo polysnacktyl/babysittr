@@ -152,11 +152,11 @@ function populate() {
         sched.appendChild(timeblock);
 
         var time = document.createElement("div");
-        $(time).addClass("column is-1 schedblock");
+        $(time).addClass("column is-narrow schedblock");
         timeblock.appendChild(time);
 
         var block = document.createElement("div");
-        $(block).addClass("column is-9 schedblock");
+        $(block).addClass("column schedblock");
         timeblock.appendChild(block);
     }
 
@@ -190,3 +190,41 @@ iceCreamBtn.addEventListener('click', iceCream);
 bowlingBtn.addEventListener('click', bowling);
 poolsBtn.addEventListener('click', pools);
 amusementBtn.addEventListener('click', amusementPark);
+
+// sidebar with drag/drop boxes
+
+var sidebar = document.createElement("div");
+
+$(sidebar).addClass("has-background-dark container sidebar");
+sched.appendChild(sidebar);
+
+var boxS = document.createElement("span");
+var boxM = document.createElement("span");
+var boxR = document.createElement("span");
+var boxN = document.createElement("span");
+var boxW = document.createElement("span");
+
+boxS.textContent = "ate (snack)";
+boxM.textContent = "ate (meal)";
+boxR.textContent = "read together";
+boxN.textContent = "nap";
+boxW.textContent = "took walk"
+
+$(boxS).addClass("tag is-large is-light draggable");
+$(boxM).addClass("tag is-large is-light draggable");
+$(boxR).addClass("tag is-large is-light draggable");
+$(boxN).addClass("tag is-large is-light draggable");
+$(boxW).addClass("tag is-large is-light draggable");
+
+sidebar.appendChild(boxS);
+sidebar.appendChild(boxM);
+sidebar.appendChild(boxR);
+sidebar.appendChild(boxN);
+sidebar.appendChild(boxW);
+
+$( function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+    });
+  } );
+
