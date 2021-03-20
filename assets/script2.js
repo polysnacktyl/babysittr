@@ -131,6 +131,7 @@ $(document).ready(function () {
     $("#modal").addClass("is-active");
     $("#enter-btn").click(function () {
         $("#modal").removeClass("is-active");
+        populate();
     });
 });
 
