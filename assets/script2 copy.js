@@ -1,6 +1,7 @@
 mapQuestApi = '8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii';
 
-// var location = userInput;
+var location = userInput;
+
 
 
 function restaurants() {
@@ -133,3 +134,4 @@ $(document).ready(function () {
         $("#modal").removeClass("is-active");
     });
 });
+
