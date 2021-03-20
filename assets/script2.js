@@ -133,3 +133,15 @@ $(document).ready(function () {
         $("#modal").removeClass("is-active");
     });
 });
+
+//Function to display running clock
+var currentDay = moment().format('dddd') + " " + moment().format("D MMMM YYYY");
+var currentTime = moment().format('hh:mm:ss a');
+
+var interval = setInterval(function () {
+    var timeNow = moment();
+    $('#clock').html(timeNow.format('YYYY MMMM DD') + ' '
+        + timeNow.format('dddd')
+            .substring(0, 3).toUpperCase());
+    $('#clock').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
+}, 1000);
