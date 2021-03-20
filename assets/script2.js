@@ -145,3 +145,56 @@ var interval = setInterval(function () {
             .substring(0, 3).toUpperCase());
     $('#clock').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
 }, 1000);
+
+// dynamically generated schedule based on modal input
+var hours;
+var place;
+var sitter;
+
+var container = document.getElementById("main-container");
+var sched = document.createElement("div");
+
+$(sched).addClass("box droppable");
+
+container.appendChild(sched);
+
+function populate() {
+    hours = $("#time").val();
+    place = $("#loc").val();
+    sitter = $("#babysitter").val();
+
+    console.log(hours);
+    console.log(place);
+    console.log(sitter);
+    for (i = 0; i < hours; i++) {
+        var timeblock = document.createElement("div")
+        $(timeblock).addClass("columns")
+        sched.appendChild(timeblock);
+
+        var time = document.createElement("div");
+        $(time).addClass("column is-1 schedblock");
+        timeblock.appendChild(time);
+
+        var block = document.createElement("div");
+        $(block).addClass("column is-9 schedblock");
+        timeblock.appendChild(block);
+    }
+}
+
+// weather api call with place pulled from modal
+place = $("#loc").val();
+var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
+// var rainy_codes = [1183, 1186, 1189, 1192];
+function call() {
+    fetch(api)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.current.condition.code);
+            console.log(data.location.name);
+            console.log(data.current.condition.text);
+            console.log(data.current.temp_f);
+            console.log('The weather in ' + data.location.name + ' is ' + data.current.temp_f + ' and ' + data.current.condition.text + '.');
+            console.log(data);
+        });
+}
+call()

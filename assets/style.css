@@ -1,3 +1,7 @@
 .hero {
     text-align: center;
 }
+
+.schedblock {
+    border: 1px solid darkgrey;
+}
