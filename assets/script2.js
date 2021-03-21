@@ -158,8 +158,11 @@ function amusementPark() {
 $(document).ready(function () {
     $("#modal").addClass("is-active");
     $("#enter-btn").click(function () {
+
+        // if form data
         $("#modal").removeClass("is-active");
         populate();
+
     });
 });
 
@@ -188,9 +191,19 @@ $(sched).addClass("box droppable");
 container.appendChild(sched);
 
 function populate() {
-    hours = $("#time").val();
-    place = $("#loc").val();
-    sitter = $("#babysitter").val();
+
+    hours = $("#time").val()
+    place = $("#loc").val()
+    sitter = $("#babysitter").val()
+
+    var userInput = {
+        hour: $("#time").val(),
+        location: $("#loc").val(),
+        name: $("#babysitter").val()
+    }
+
+
+
 
     console.log(hours);
     console.log(place);
@@ -218,6 +231,21 @@ function populate() {
         }
     }
 
+    // setting user input to local storage and displaying name
+
+    localStorage.setItem("userData", JSON.stringify(userInput));
+    var userData = JSON.parse(localStorage.getItem(userData));
+    console.log(userInput.name);
+    if (!userInput.name) {
+        // populate()
+        // return
+    }
+    else {
+        var babySitter = document.createElement('p');
+        babySitter.textContent = ("Hello, " + userInput.name)
+        document.getElementById('weather').append(babySitter)
+        console.log(userInput);
+    }
     // weather api call with place pulled from modal
     place = $("#loc").val();
     var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
