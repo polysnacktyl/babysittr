@@ -164,18 +164,111 @@ function populate() {
     // weather api call with place pulled from modal
     place = $("#loc").val();
     var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
-    // var rainy_codes = [1183, 1186, 1189, 1192];
+    var weatherClouds = [1006, 1135, 1003, 1009];
+    var weatherRains = [1030, 1063, 1087, 1150, 1153, 1180, 1183, 1186, 1189];
+    var weatherDangerRains = [1192, 1195, 1240, 1243, 1246, 1273, 1276];
+    var weatherFreezingRains = [1069, 1072, 1168, 1171, 1198, 1201, 1204, 1207, 1249, 1252]
+    var weatherSnows = [1066, 1210, 1213];
+    var weatherDangerSnows = [1216, 1219, 1222, 1225, 1237, 1255, 1258, 1261, 1264, 1279, 1282, 1114, 1117, 1147];
+    //weather icons from https://www.weatherapi.com/docs/
+    
     function call() {
         fetch(api)
             .then(response => response.json())
             .then(data => {
-                console.log(data.current.condition.code);
-                console.log(data.location.name);
-                console.log(data.current.condition.text);
-                console.log(data.current.temp_f);
-                console.log('The weather in ' + data.location.name + ' is ' + data.current.temp_f + ' and ' + data.current.condition.text + '.');
                 console.log(data);
+    
+                if (data.current.condition.text == 'Sunny') {
+                    var sunny = document.createElement('p');
+                    var sunnyIcon = document.createElement('img');
+                    var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
+                    sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
+                    sunny.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(sunnyIcon);
+                    document.getElementById('weather').append(sunny, sunnyAdvice);
+    
+                };
+    
+                if (data.current.condition.text == 'Clear') {
+                    var clear = document.createElement('p');
+                    var clearIcon = document.createElement('img');
+                    var clearAdvice = "";
+                    clearIcon.src = "./assets/images/weather-icons/clearnight.png";
+                    clear.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(clearIcon);
+                    document.getElementById('weather').append(clear, clearAdvice);
+    
+                };
+    
+                if (weatherClouds.includes(data.current.condition.code)) {
+                    var clouds = document.createElement('p');
+                    var cloudsIcon = document.createElement('img');
+                    var cloudsAdvice = "";
+                    cloudsIcon.src = "./assets/images/weather-icons/clouds.png";
+                    clouds.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(cloudsIcon);
+                    document.getElementById('weather').append(clouds, cloudsAdvice);
+    
+                };
+    
+                if (weatherRains.includes(data.current.condition.code)) {
+                    var rains = document.createElement('p');
+                    var rainIcon = document.createElement('img')
+                    var rainsAdvice = "time to stomp some puddles! don't forget boots and an umbrella!";
+                    rainIcon.src = "./assets/images/weather-icons/rain.png"
+                    rains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(rainIcon);
+                    document.getElementById('weather').append(rains, rainsAdvice);
+    
+                };
+    
+                if (weatherDangerRains.includes(data.current.condition.code)) {
+                    var dangerRains = document.createElement('p');
+                    var stormIcon = document.createElement('img')
+                    var dangerRainsAdvice = "hazardous wet conditions--play some inside games today";
+                    stormIcon.src = "./assets/images/weather-icons/storm.png"
+                    dangerRains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(stormIcon);
+                    document.getElementById('weather').append(dangerRains, dangerRainsAdvice);
+    
+                };
+    
+                if (weatherFreezingRains.includes(data.current.condition.code)) {
+                    var freezyRains = document.createElement('p');
+                    var snowRainIcon = document.createElement('img')
+                    var freezyRainsAdvice = "it's freezing and wet outside today--be careful!";
+                    stormIcon.src = "./assets/images/weather-icons/snowandrain.png"
+                    freezyRains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(snowRainIcon);
+                    document.getElementById('weather').append(freezyRains, freezyRainsAdvice);
+    
+                };
+    
+                if (weatherSnows.includes(data.current.condition.code)) {
+                    var snow = document.createElement('p');
+                    var snowIcon = document.createElement('img')
+                    var snowAdvice = "it's snowy out today, so bundle up and don't forget your mittens!";
+                    stormIcon.src = "./assets/images/weather-icons/snow.png"
+                    snows.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(snowIcon);
+                    document.getElementById('weather').append(snow, snowAdvice);
+    
+                };
+    
+                if (weatherDangerSnows.includes(data.current.condition.code)) {
+                    var dangerSnows = document.createElement('p');
+                    var dangerSnowsIcon = document.createElement('img')
+                    var dangerSnowsAdvice = "today would be a great day for staying home and making hot cocoa";
+                    stormIcon.src = "./assets/images/weather-icons/snowstorm.png"
+                    snows.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+                    document.getElementById('weather').append(dangerSnowsIcon);
+                    document.getElementById('weather').append(dangerSnows, dangerSnowsAdvice);
+                };
+    
+    
             });
+    
+    
     }
     call()
 }
