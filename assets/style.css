@@ -22,3 +22,46 @@
 .level-left {
     margin-left: 15px; 
 }
+
+/* Create color options that may be changed universally by any team member */
+:root {
+    --sky:#66ccff;
+    --mint:#99ffcc;
+    --brilliant:#1a1aff;
+    --gray:#404040;
+}
+
+button {
+    border-left: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+    border-radius:10px;
+    color: var(--sky);
+    background-color: var(--gray);
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: inset 0px 0px 8px var(--mint), 0 0 15px var(--mint);
+}
+
+button:hover {
+    box-shadow: inset 0px 0px 8px var(--mint), 0 0 15px var(--brilliant);
+    background-color: var(--brilliant);
+    color: var(--mint);
+}
+
+#clock {
+    color: var(--gray);
+    font-weight: 700;
+    box-shadow: inset 0px 0px 8px var(--gray), 0 0 15px var(--gray);
+}
+nav {
+    background-color: var(--sky);
+}
+.title {
+    font-size: 30px;
+    font-weight:900;
+    color: var(--gray);
+    box-shadow: inset 0px 0px 8px var(--sky), 0 0 15px var(--gray);
+}
+.notification {
+    background-color: var(--sky);
+}
