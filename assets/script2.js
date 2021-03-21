@@ -11,7 +11,7 @@ var amusementBtn = document.getElementById('amusementParks')
 
 // call place functions based on users location
 function restaurants() {
-    var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(restaurantsUrl)
         .then(function (response) {
             return response.json();
@@ -19,14 +19,23 @@ function restaurants() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxRestaurant = document.createElement("span")
+                boxRestaurant.textContent = (data.searchResults[i].name)
+                $(boxRestaurant).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxRestaurant);
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
+
     console.log(restaurantsUrl);
 }
 function aquariums() {
-    var aquariumsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C842205&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var aquariumsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C842205&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(aquariumsUrl)
         .then(function (response) {
             return response.json();
@@ -34,14 +43,22 @@ function aquariums() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxAquarium = document.createElement("span")
+                boxAquarium.textContent = (data.searchResults[i].name)
+                $(boxAquarium).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxAquarium);
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
     console.log(aquariumsUrl);
 }
 function iceCream() {
-    var iceCreamUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581203&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var iceCreamUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581203&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(iceCreamUrl)
         .then(function (response) {
             return response.json();
@@ -49,14 +66,22 @@ function iceCream() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxIceCream = document.createElement("span")
+                boxIceCream.textContent = (data.searchResults[i].name)
+                $(boxIceCream).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxIceCream);
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
     console.log(iceCreamUrl);
 }
 function bowling() {
-    var bowlingUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C793301&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var bowlingUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C793301&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(bowlingUrl)
         .then(function (response) {
             return response.json();
@@ -64,14 +89,22 @@ function bowling() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxBowling = document.createElement("span")
+                boxBowling.textContent = (data.searchResults[i].name)
+                $(boxBowling).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxBowling)
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
     console.log(bowlingUrl);
 }
 function pools() {
-    var poolsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799969&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var poolsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799969&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(poolsUrl)
         .then(function (response) {
             return response.json();
@@ -79,14 +112,22 @@ function pools() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxPools = document.createElement("span")
+                boxPools.textContent = (data.searchResults[i].name)
+                $(boxPools).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxPools);
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
     console.log(poolsUrl);
 }
 function amusementPark() {
-    var amusementParkUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=50&maxMatches=10&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799604&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+    var amusementParkUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + place + '&radius=50&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799604&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
     fetch(amusementParkUrl)
         .then(function (response) {
             return response.json();
@@ -94,7 +135,15 @@ function amusementPark() {
         .then(function (data) {
             for (var i = 0; i < data.searchResults.length; i++) {
                 console.log(data.searchResults[i].name)
-                // .append(searchResults[i].name)
+                var boxAmusParks = document.createElement("span")
+                boxAmusParks.textContent = (data.searchResults[i].name)
+                $(boxAmusParks).addClass("tag is-large is-light draggable");
+                sidebar.appendChild(boxAmusParks);
+                $(function () {
+                    $(".draggable").draggable();
+                    $(".droppable").droppable({
+                    });
+                });
             }
             console.log("-----------------")
         })
@@ -222,9 +271,9 @@ sidebar.appendChild(boxR);
 sidebar.appendChild(boxN);
 sidebar.appendChild(boxW);
 
-$( function() {
-    $( ".draggable" ).draggable();
-    $( ".droppable" ).droppable({
+$(function () {
+    $(".draggable").draggable();
+    $(".droppable").droppable({
     });
-  } );
+});
 
