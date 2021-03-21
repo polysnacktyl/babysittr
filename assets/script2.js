@@ -21,7 +21,7 @@ function restaurants() {
                 console.log(data.searchResults[i].name)
                 var boxRestaurant = document.createElement("span")
                 boxRestaurant.textContent = (data.searchResults[i].name)
-                $(boxRestaurant).addClass("tag is-large is-light draggable");
+                $(boxRestaurant).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxRestaurant);
                 $(function () {
                     $(".draggable").draggable();
@@ -45,7 +45,7 @@ function aquariums() {
                 console.log(data.searchResults[i].name)
                 var boxAquarium = document.createElement("span")
                 boxAquarium.textContent = (data.searchResults[i].name)
-                $(boxAquarium).addClass("tag is-large is-light draggable");
+                $(boxAquarium).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxAquarium);
                 $(function () {
                     $(".draggable").draggable();
@@ -68,7 +68,7 @@ function iceCream() {
                 console.log(data.searchResults[i].name)
                 var boxIceCream = document.createElement("span")
                 boxIceCream.textContent = (data.searchResults[i].name)
-                $(boxIceCream).addClass("tag is-large is-light draggable");
+                $(boxIceCream).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxIceCream);
                 $(function () {
                     $(".draggable").draggable();
@@ -91,7 +91,7 @@ function bowling() {
                 console.log(data.searchResults[i].name)
                 var boxBowling = document.createElement("span")
                 boxBowling.textContent = (data.searchResults[i].name)
-                $(boxBowling).addClass("tag is-large is-light draggable");
+                $(boxBowling).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxBowling)
                 $(function () {
                     $(".draggable").draggable();
@@ -114,7 +114,7 @@ function pools() {
                 console.log(data.searchResults[i].name)
                 var boxPools = document.createElement("span")
                 boxPools.textContent = (data.searchResults[i].name)
-                $(boxPools).addClass("tag is-large is-light draggable");
+                $(boxPools).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxPools);
                 $(function () {
                     $(".draggable").draggable();
@@ -137,7 +137,7 @@ function amusementPark() {
                 console.log(data.searchResults[i].name)
                 var boxAmusParks = document.createElement("span")
                 boxAmusParks.textContent = (data.searchResults[i].name)
-                $(boxAmusParks).addClass("tag is-large is-light draggable");
+                $(boxAmusParks).addClass("button is-multiline is-light draggable");
                 sidebar.appendChild(boxAmusParks);
                 $(function () {
                     $(".draggable").draggable();
@@ -201,7 +201,7 @@ function populate() {
         sched.appendChild(timeblock);
 
         var time = document.createElement("div");
-        $(time).addClass("column is-narrow hourblock schedblock");
+        $(time).addClass("column is-1 hourblock schedblock");
         timeblock.appendChild(time);
 
         var block = document.createElement("div");
@@ -360,11 +360,11 @@ boxR.textContent = "read together";
 boxN.textContent = "nap";
 boxW.textContent = "took walk"
 
-$(boxS).addClass("tag is-large is-light draggable");
-$(boxM).addClass("tag is-large is-light draggable");
-$(boxR).addClass("tag is-large is-light draggable");
-$(boxN).addClass("tag is-large is-light draggable");
-$(boxW).addClass("tag is-large is-light draggable");
+$(boxS).addClass("button is-light draggable");
+$(boxM).addClass("button is-light draggable");
+$(boxR).addClass("button is-light draggable");
+$(boxN).addClass("button is-light draggable");
+$(boxW).addClass("button is-light draggable");
 
 sidebar.appendChild(boxS);
 sidebar.appendChild(boxM);
