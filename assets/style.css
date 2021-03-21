@@ -22,3 +22,27 @@
 .level-left {
     margin-left: 15px; 
 }
+
+/* Create color options that may be changed universally by any team member */
+:root {
+    --sky:#66ccff;
+    --mint:#99ffcc;
+    --brilliant:#1a1aff;
+    --gray:#808080;
+}
+
+button {
+    border-left: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+    border-radius:10px;
+    color: var(--gray);
+    background-color: var(--sky);
+    font-weight: 400;
+    font-size: 16px;
+    box-shadow: inset 0px 0px 8px var(--mint), 0 0 15px var(--mint);
+}
+
+button:hover {
+    box-shadow: inset 0px 0px 8px var(--brilliant), 0 0 15px var(--brilliant);
+    background-color: var(--mint);
+}
