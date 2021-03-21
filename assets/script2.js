@@ -150,21 +150,28 @@ function amusementPark() {
     console.log(amusementParkUrl);
 }
 
-
-
-
-
-
 $(document).ready(function () {
     $("#modal").addClass("is-active");
     $("#enter-btn").click(function () {
-
-        // if form data
-        $("#modal").removeClass("is-active");
-        populate();
-
+        if ($("#time").val() === "" || $("#loc").val() === "") {
+            $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
+        } else {
+            $("#modal").removeClass("is-active");
+            populate();
+        }
     });
 });
+
+// $(document).ready(function () {
+//     $("#modal").addClass("is-active");
+//     $("#enter-btn").click(function () {
+
+//         // if form data
+//         $("#modal").removeClass("is-active");
+//         populate();
+
+//     });
+// });
 
 //Function to display running clock
 var currentDay = moment().format('dddd') + " " + moment().format("D MMMM YYYY");

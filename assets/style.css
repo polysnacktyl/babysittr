@@ -73,3 +73,7 @@ nav {
     height: auto;
     flex-direction: column;
 }
+
+.import {
+    font-weight: bold;
+}
