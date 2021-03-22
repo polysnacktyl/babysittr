@@ -149,10 +149,10 @@ function amusementPark() {
         })
     console.log(amusementParkUrl);
 }
-
+// page resfresh and stops modal from running if there is data in localStorage
 $(document).ready(function () {
     console.log((localStorage.getItem("userData")));
-
+    // if there is no data then run modal
     if (!JSON.parse(localStorage.getItem("userData"))) {
         $("#modal").addClass("is-active");
 
@@ -172,7 +172,9 @@ $(document).ready(function () {
             }
         });
     }
+    // if localStorage has data then run this else statement which is getting all of our data from localStorage and displaying it 
     else {
+        // declaring variables for weather info
         var userInfo = JSON.parse(localStorage.getItem("userData"));
         var weatherInfo = JSON.parse(localStorage.getItem("weatherInfo"));
         var weatherClouds = [1006, 1135, 1003, 1009];
@@ -187,13 +189,13 @@ $(document).ready(function () {
         var babySitter = document.createElement('p');
         babySitter.textContent = ("Hello, " + userInfo.name)
         document.getElementById('weather').append(babySitter)
-
+        // if statements for weather info and using the data stored in localStorage
         if (weatherInfo.weatherCondition == 'Sunny') {
             var sunny = document.createElement('p');
             var sunnyIcon = document.createElement('img');
             var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
             sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
-            sunny.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            sunny.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(sunnyIcon);
             document.getElementById('weather').append(sunny, sunnyAdvice);
 
@@ -204,7 +206,7 @@ $(document).ready(function () {
             var clearIcon = document.createElement('img');
             var clearAdvice = "";
             clearIcon.src = "./assets/images/weather-icons/clearnight.png";
-            clear.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            clear.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(clearIcon);
             document.getElementById('weather').append(clear, clearAdvice);
 
@@ -215,7 +217,7 @@ $(document).ready(function () {
             var cloudsIcon = document.createElement('img');
             var cloudsAdvice = "";
             cloudsIcon.src = "./assets/images/weather-icons/clouds.png";
-            clouds.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            clouds.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(cloudsIcon);
             document.getElementById('weather').append(clouds, cloudsAdvice);
 
@@ -226,7 +228,7 @@ $(document).ready(function () {
             var rainIcon = document.createElement('img')
             var rainsAdvice = "time to stomp some puddles! don't forget boots and an umbrella!";
             rainIcon.src = "./assets/images/weather-icons/rain.png"
-            rains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            rains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(rainIcon);
             document.getElementById('weather').append(rains, rainsAdvice);
 
@@ -237,7 +239,7 @@ $(document).ready(function () {
             var stormIcon = document.createElement('img')
             var dangerRainsAdvice = "hazardous wet conditions--play some inside games today";
             stormIcon.src = "./assets/images/weather-icons/storm.png"
-            dangerRains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            dangerRains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(stormIcon);
             document.getElementById('weather').append(dangerRains, dangerRainsAdvice);
 
@@ -248,7 +250,7 @@ $(document).ready(function () {
             var snowRainIcon = document.createElement('img')
             var freezyRainsAdvice = "it's freezing and wet outside today--be careful!";
             stormIcon.src = "./assets/images/weather-icons/snowandrain.png"
-            freezyRains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            freezyRains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(snowRainIcon);
             document.getElementById('weather').append(freezyRains, freezyRainsAdvice);
 
@@ -259,7 +261,7 @@ $(document).ready(function () {
             var snowIcon = document.createElement('img')
             var snowAdvice = "it's snowy out today, so bundle up and don't forget your mittens!";
             stormIcon.src = "./assets/images/weather-icons/snow.png"
-            snows.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            snows.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(snowIcon);
             document.getElementById('weather').append(snow, snowAdvice);
 
@@ -270,31 +272,186 @@ $(document).ready(function () {
             var dangerSnowsIcon = document.createElement('img')
             var dangerSnowsAdvice = "today would be a great day for staying home and making hot cocoa";
             stormIcon.src = "./assets/images/weather-icons/snowstorm.png"
-            snows.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            snows.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(dangerSnowsIcon);
             document.getElementById('weather').append(dangerSnows, dangerSnowsAdvice);
         };
+        // for loop for displaying hour blocks
+        for (i = 0; i < userInfo.hour; i++) {
+            var timeblock = document.createElement("div")
+            $(timeblock).addClass("columns")
+            sched.appendChild(timeblock);
+            //line 221 changed from "is-narrow" to "is-1" --what does that do? ***********************
+            var time = document.createElement("div");
+            $(time).addClass("column is-narrow hourblock schedblock");
+            timeblock.appendChild(time);
 
+            var block = document.createElement("div");
+            $(block).addClass("column schedblock");
+            timeblock.appendChild(block);
+
+            // populate time blocks with each hour, starting when form info is entered
+            var hourBlockCol = document.getElementsByClassName("hourblock")
+
+            hourBlockCol[0].textContent = moment().format("h:mm");
+
+            for (var h = 1; h < hourBlockCol.length; h++) {
+                hourBlockCol[h].textContent = moment().add(h, "hour").format("h:mm");
+            }
+            // functions for places api for each button
+            function restaurants() {
+                var restaurantsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581208&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(restaurantsUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxRestaurant = document.createElement("span")
+                            boxRestaurant.textContent = (data.searchResults[i].name)
+                            $(boxRestaurant).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxRestaurant);
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+
+                console.log(restaurantsUrl);
+            }
+            function aquariums() {
+                var aquariumsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C842205&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(aquariumsUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxAquarium = document.createElement("span")
+                            boxAquarium.textContent = (data.searchResults[i].name)
+                            $(boxAquarium).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxAquarium);
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+                console.log(aquariumsUrl);
+            }
+            function iceCream() {
+                var iceCreamUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C581203&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(iceCreamUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxIceCream = document.createElement("span")
+                            boxIceCream.textContent = (data.searchResults[i].name)
+                            $(boxIceCream).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxIceCream);
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+                console.log(iceCreamUrl);
+            }
+            function bowling() {
+                var bowlingUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C793301&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(bowlingUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxBowling = document.createElement("span")
+                            boxBowling.textContent = (data.searchResults[i].name)
+                            $(boxBowling).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxBowling)
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+                console.log(bowlingUrl);
+            }
+            function pools() {
+                var poolsUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=25&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799969&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(poolsUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxPools = document.createElement("span")
+                            boxPools.textContent = (data.searchResults[i].name)
+                            $(boxPools).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxPools);
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+                console.log(poolsUrl);
+            }
+            function amusementPark() {
+                var amusementParkUrl = 'https://www.mapquestapi.com/search/v2/radius?origin=' + userInfo.location + '&radius=50&maxMatches=3&ambiguities=ignore&hostedData=mqap.ntpois%7Cgroup_sic_code=?%7C799604&outFormat=json&key=8kMgrQJseESEni1XetBPHUm2Ogcgj9Ii'
+                fetch(amusementParkUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        for (var i = 0; i < data.searchResults.length; i++) {
+                            console.log(data.searchResults[i].name)
+                            var boxAmusParks = document.createElement("span")
+                            boxAmusParks.textContent = (data.searchResults[i].name)
+                            $(boxAmusParks).addClass("button is-multiline is-light draggable");
+                            sidebar.appendChild(boxAmusParks);
+                            $(function () {
+                                $(".draggable").draggable();
+                                $(".droppable").droppable({
+                                });
+                            });
+                        }
+                        console.log("-----------------")
+                    })
+                console.log(amusementParkUrl);
+            }
+            // buttons have to be included in this else statement for them to be able to be clicked on refresh (if refreshed and the buttons are already clicked it will be run multiple times because it is already in localStorage)
+            restaurantBtn.addEventListener('click', restaurants);
+            aquariumBtn.addEventListener('click', aquariums);
+            iceCreamBtn.addEventListener('click', iceCream);
+            bowlingBtn.addEventListener('click', bowling);
+            poolsBtn.addEventListener('click', pools);
+            amusementBtn.addEventListener('click', amusementPark);
+        }
 
     }
-    // else {localStorage.getItem("userData" 
-    //     var userInfo = JSON.parse(localStorage.getItem(userData));
-    //     console.log(userInfo);
-    // }
+
 });
 
 
-
-// $(document).ready(function () {
-//     $("#modal").addClass("is-active");
-//     $("#enter-btn").click(function () {
-
-//         // if form data
-//         $("#modal").removeClass("is-active");
-//         populate();
-
-//     });
-// });
 
 //Function to display running clock
 var currentDay = moment().format('dddd') + " " + moment().format("D MMMM YYYY");
