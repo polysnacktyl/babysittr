@@ -91,6 +91,7 @@ nav {
 
 .draggable {
     margin: 10px;
+    max-width: 200px;
 }
 
 .level-item{
@@ -113,6 +114,14 @@ nav {
 }
 .notification {
     background-color: var(--skyblue);
+}
+
+/* Makes button text wrap once it hits max-width */
+.button.is-multiline {
+    min-height: 2.25em;
+    white-space: unset;
+    height: auto;
+    flex-direction: column;
 }
 
 #clock {
