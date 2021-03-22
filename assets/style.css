@@ -1,10 +1,83 @@
+* {font-family: 'Baloo Tammudu 2';
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+}
+
+html {
+    background-color: var(--skyblue);
+}
+
+body {
+  background-color: var(--skyblue);
+  font-family: 'Baloo Tammudu 2';
+  
+}
+
+button {
+    border-radius: 5px;
+    color: lightgrey;
+    background-color: var(--slate);
+    font-weight: 600;
+    font-family: 'Baloo Tammudu 2';
+}
+
+button:hover {
+    color: white;
+}
+
+nav {
+    background-color: var(--slate);
+    padding-bottom: 20px;
+    color: lightgrey;
+}
+
+:root {
+    --slate:#5E6472;
+    --skyblue:#e0f8fc;
+    --mintygreen:#B8F2E6;
+    --babyyellow: #fffcf1;
+    --pinkish: #FFA69E;
+}
+
 .hero {
     text-align: center;
+    padding-bottom: 0px;
+    font-family: 'Baloo Tammudu 2';
+}
+
+.hero-body {
+    padding-bottom: 10px;
+}
+
+.droppable{
+    display:block;
+    justify-content: left;
+}
+
+.columns{
+    margin-left:20px;
+}
+
+.section {
+    padding-top:0px;
+    margin-left: 25px;
+    margin-right: 30px;
+    padding-left: 25px;
 }
 
 .schedblock {
     border: 1px solid darkgrey;
     border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.hourblock{
+    text-align: right;
+    font-weight: bold;
+    width: 75px;
 }
 
 .sidebar {
@@ -13,67 +86,47 @@
     text-align: center;
     padding: 20px;
     border-radius: 5px;
+    margin-left: 20px;
 }
 
 .draggable {
     margin: 10px;
-    max-width: 150px;
+}
+
+.level-item{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
 }
 
 .level-left {
     margin-left: 15px; 
+    font-weight: 600;
+    color: lightgrey;
 }
 
-/* Create color options that may be changed universally by any team member */
-:root {
-    --sky:#66ccff;
-    --mint:#99ffcc;
-    --brilliant:#1a1aff;
-    --gray:#404040;
-}
-
-button {
-    border-left: 1px solid var(--gray);
-    border-right: 1px solid var(--gray);
-    border-radius:10px;
-    color: var(--sky);
-    background-color: var(--gray);
-    font-weight: 700;
-    font-size: 16px;
-    box-shadow: inset 0px 0px 8px var(--mint), 0 0 15px var(--mint);
-}
-
-button:hover {
-    box-shadow: inset 0px 0px 8px var(--mint), 0 0 15px var(--brilliant);
-    background-color: var(--brilliant);
-    color: var(--mint);
-}
-
-#clock {
-    color: var(--gray);
-    font-weight: 700;
-    box-shadow: inset 0px 0px 8px var(--gray), 0 0 15px var(--gray);
-}
-nav {
-    background-color: var(--sky);
-}
 .title {
     font-size: 30px;
     font-weight:900;
-    color: var(--gray);
-    box-shadow: inset 0px 0px 8px var(--sky), 0 0 15px var(--gray);
+    color: var(--slate);
+    font-size: 80px;
 }
 .notification {
-    background-color: var(--sky);
+    background-color: var(--skyblue);
 }
 
-.button.is-multiline {
-    min-height: 2.25em;
-    white-space: unset;
-    height: auto;
-    flex-direction: column;
+#clock {
+    margin-top: 5px;
+    color: lightgrey;
+    font-weight: 700;
 }
 
-.import {
-    font-weight: bold;
+#whatFun{
+    color:white;
+}
+
+#weather {
+    color: lightgrey;
+    font-weight: 600;
+    /* justify-content: left;           *THIS IS STIL WONK* 
 }
