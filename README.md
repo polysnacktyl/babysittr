@@ -1,4 +1,3 @@
-# project-1
 # Project 1
 
 ## Application Requirements
@@ -92,6 +91,9 @@ git commit -m "explanation of changes"
 git push
 
 Finished Project:
+
+Our QR Code:
+ <img src="assets/images/qr-code.png"
 
 Visit this repository at:
 https://github.com/polysnacktyl/project-1
