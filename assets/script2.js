@@ -151,25 +151,138 @@ function amusementPark() {
 }
 
 $(document).ready(function () {
-    if (!JSON.parse(localStorage.getItem("userData")).hour) {
-        $("#modal").addClass("is-active");
-    }
-    $("#enter-btn").click(function () {
-        if ($("#time").val() === "" || $("#loc").val() === "") {
-            $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
-        } else {
-            var userInput = {
-                hour: $("#time").val(),
-                location: $("#loc").val(),
-                name: $("#babysitter").val()
-            }
-            localStorage.setItem("userData", JSON.stringify(userInput));
+    console.log((localStorage.getItem("userData")));
 
-            $("#modal").removeClass("is-active");
-            populate()
-        }
-    });
+    if (!JSON.parse(localStorage.getItem("userData"))) {
+        $("#modal").addClass("is-active");
+
+        $("#enter-btn").click(function () {
+            if ($("#time").val() === "" || $("#loc").val() === "") {
+                $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
+            } else {
+                var userInput = {
+                    hour: $("#time").val(),
+                    location: $("#loc").val(),
+                    name: $("#babysitter").val()
+                }
+                localStorage.setItem("userData", JSON.stringify(userInput));
+
+                $("#modal").removeClass("is-active");
+                populate()
+            }
+        });
+    }
+    else {
+        var userInfo = JSON.parse(localStorage.getItem("userData"));
+        var weatherInfo = JSON.parse(localStorage.getItem("weatherInfo"));
+        var weatherClouds = [1006, 1135, 1003, 1009];
+        var weatherRains = [1030, 1063, 1087, 1150, 1153, 1180, 1183, 1186, 1189];
+        var weatherDangerRains = [1192, 1195, 1240, 1243, 1246, 1273, 1276];
+        var weatherFreezingRains = [1069, 1072, 1168, 1171, 1198, 1201, 1204, 1207, 1249, 1252]
+        var weatherSnows = [1066, 1210, 1213];
+        var weatherDangerSnows = [1216, 1219, 1222, 1225, 1237, 1255, 1258, 1261, 1264, 1279, 1282, 1114, 1117, 1147];
+        console.log(userInfo);
+        console.log(weatherInfo)
+        // <p id="weather"><p>Hello, mom</p><img src="./assets/images/weather-icons/sunny.png"><p>Barrington: 50°, Sunny.</p>Why not go play outside? Don't forget the sunscreen!</p>
+        var babySitter = document.createElement('p');
+        babySitter.textContent = ("Hello, " + userInfo.name)
+        document.getElementById('weather').append(babySitter)
+
+        if (weatherInfo.weatherCondition == 'Sunny') {
+            var sunny = document.createElement('p');
+            var sunnyIcon = document.createElement('img');
+            var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
+            sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
+            sunny.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(sunnyIcon);
+            document.getElementById('weather').append(sunny, sunnyAdvice);
+
+        };
+
+        if (weatherInfo.weatherCondition == 'Clear') {
+            var clear = document.createElement('p');
+            var clearIcon = document.createElement('img');
+            var clearAdvice = "";
+            clearIcon.src = "./assets/images/weather-icons/clearnight.png";
+            clear.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(clearIcon);
+            document.getElementById('weather').append(clear, clearAdvice);
+
+        };
+
+        if (weatherClouds.includes(weatherInfo.weatherCode)) {
+            var clouds = document.createElement('p');
+            var cloudsIcon = document.createElement('img');
+            var cloudsAdvice = "";
+            cloudsIcon.src = "./assets/images/weather-icons/clouds.png";
+            clouds.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(cloudsIcon);
+            document.getElementById('weather').append(clouds, cloudsAdvice);
+
+        };
+
+        if (weatherRains.includes(weatherInfo.weatherCode)) {
+            var rains = document.createElement('p');
+            var rainIcon = document.createElement('img')
+            var rainsAdvice = "time to stomp some puddles! don't forget boots and an umbrella!";
+            rainIcon.src = "./assets/images/weather-icons/rain.png"
+            rains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(rainIcon);
+            document.getElementById('weather').append(rains, rainsAdvice);
+
+        };
+
+        if (weatherDangerRains.includes(weatherInfo.weatherCode)) {
+            var dangerRains = document.createElement('p');
+            var stormIcon = document.createElement('img')
+            var dangerRainsAdvice = "hazardous wet conditions--play some inside games today";
+            stormIcon.src = "./assets/images/weather-icons/storm.png"
+            dangerRains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(stormIcon);
+            document.getElementById('weather').append(dangerRains, dangerRainsAdvice);
+
+        };
+
+        if (weatherFreezingRains.includes(weatherInfo.weatherCode)) {
+            var freezyRains = document.createElement('p');
+            var snowRainIcon = document.createElement('img')
+            var freezyRainsAdvice = "it's freezing and wet outside today--be careful!";
+            stormIcon.src = "./assets/images/weather-icons/snowandrain.png"
+            freezyRains.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(snowRainIcon);
+            document.getElementById('weather').append(freezyRains, freezyRainsAdvice);
+
+        };
+
+        if (weatherSnows.includes(weatherInfo.weatherCode)) {
+            var snow = document.createElement('p');
+            var snowIcon = document.createElement('img')
+            var snowAdvice = "it's snowy out today, so bundle up and don't forget your mittens!";
+            stormIcon.src = "./assets/images/weather-icons/snow.png"
+            snows.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(snowIcon);
+            document.getElementById('weather').append(snow, snowAdvice);
+
+        };
+
+        if (weatherDangerSnows.includes(weatherInfo.weatherCode)) {
+            var dangerSnows = document.createElement('p');
+            var dangerSnowsIcon = document.createElement('img')
+            var dangerSnowsAdvice = "today would be a great day for staying home and making hot cocoa";
+            stormIcon.src = "./assets/images/weather-icons/snowstorm.png"
+            snows.textContent = userInfo.location + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
+            document.getElementById('weather').append(dangerSnowsIcon);
+            document.getElementById('weather').append(dangerSnows, dangerSnowsAdvice);
+        };
+
+
+    }
+    // else {localStorage.getItem("userData" 
+    //     var userInfo = JSON.parse(localStorage.getItem(userData));
+    //     console.log(userInfo);
+    // }
 });
+
 
 
 // $(document).ready(function () {
@@ -217,6 +330,7 @@ function populate() {
         hour: $("#time").val(),
         location: $("#loc").val(),
         name: $("#babysitter").val()
+
     }
 
     console.log(hours);
@@ -246,9 +360,9 @@ function populate() {
     }
 
     // setting user input to local storage and displaying name
-    if (!localStorage.getItem("userData")) {
-        localStorage.setItem("userData", JSON.stringify(userInput));
-    }
+    // if (!localStorage.getItem("userData")) {
+    //     localStorage.setItem("userData", JSON.stringify(userInput));
+    // }
 
     var userData = JSON.parse(localStorage.getItem(userData));
     console.log(userInput.name);
@@ -265,7 +379,7 @@ function populate() {
 
     // weather api call with place pulled from modal
     place = $("#loc").val();
-    var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
+    var api = "https://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
     var weatherClouds = [1006, 1135, 1003, 1009];
     var weatherRains = [1030, 1063, 1087, 1150, 1153, 1180, 1183, 1186, 1189];
     var weatherDangerRains = [1192, 1195, 1240, 1243, 1246, 1273, 1276];
@@ -279,7 +393,13 @@ function populate() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-
+                var weatherData = {
+                    weatherLocation: data.location.name,
+                    weatherTemp: data.current.temp_f,
+                    weatherCondition: data.current.condition.text,
+                    weatherCode: data.current.condition.code
+                }
+                localStorage.setItem("weatherInfo", JSON.stringify(weatherData));
                 if (data.current.condition.text == 'Sunny') {
                     var sunny = document.createElement('p');
                     var sunnyIcon = document.createElement('img');
@@ -375,7 +495,7 @@ function populate() {
     call()
 
 }
-populate()
+// populate()
 
 
 // button click events to fire off place functions
@@ -423,4 +543,14 @@ $(function () {
     $(".droppable").droppable({
     });
 });
+
+// function creatWeatherElement(weatherCondition) {
+//     var sunny = document.createElement('p');
+//     var sunnyIcon = document.createElement('img');
+//     var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
+//     sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
+//     sunny.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
+//     document.getElementById('weather').append(sunnyIcon);
+//     document.getElementById('weather').append(sunny, sunnyAdvice);
+// }
 
