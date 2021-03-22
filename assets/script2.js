@@ -21,7 +21,7 @@ function restaurants() {
                 console.log(data.searchResults[i].name)
                 var boxRestaurant = document.createElement("span")
                 boxRestaurant.textContent = (data.searchResults[i].name)
-                $(boxRestaurant).addClass("button is-multiline is-light draggable");
+                $(boxRestaurant).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxRestaurant);
                 $(function () {
                     $(".draggable").draggable();
@@ -45,7 +45,7 @@ function aquariums() {
                 console.log(data.searchResults[i].name)
                 var boxAquarium = document.createElement("span")
                 boxAquarium.textContent = (data.searchResults[i].name)
-                $(boxAquarium).addClass("button is-multiline is-light draggable");
+                $(boxAquarium).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxAquarium);
                 $(function () {
                     $(".draggable").draggable();
@@ -68,7 +68,7 @@ function iceCream() {
                 console.log(data.searchResults[i].name)
                 var boxIceCream = document.createElement("span")
                 boxIceCream.textContent = (data.searchResults[i].name)
-                $(boxIceCream).addClass("button is-multiline is-light draggable");
+                $(boxIceCream).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxIceCream);
                 $(function () {
                     $(".draggable").draggable();
@@ -91,7 +91,7 @@ function bowling() {
                 console.log(data.searchResults[i].name)
                 var boxBowling = document.createElement("span")
                 boxBowling.textContent = (data.searchResults[i].name)
-                $(boxBowling).addClass("button is-multiline is-light draggable");
+                $(boxBowling).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxBowling)
                 $(function () {
                     $(".draggable").draggable();
@@ -114,7 +114,7 @@ function pools() {
                 console.log(data.searchResults[i].name)
                 var boxPools = document.createElement("span")
                 boxPools.textContent = (data.searchResults[i].name)
-                $(boxPools).addClass("button is-multiline is-light draggable");
+                $(boxPools).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxPools);
                 $(function () {
                     $(".draggable").draggable();
@@ -137,7 +137,7 @@ function amusementPark() {
                 console.log(data.searchResults[i].name)
                 var boxAmusParks = document.createElement("span")
                 boxAmusParks.textContent = (data.searchResults[i].name)
-                $(boxAmusParks).addClass("button is-multiline is-light draggable");
+                $(boxAmusParks).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxAmusParks);
                 $(function () {
                     $(".draggable").draggable();
@@ -156,7 +156,8 @@ $(document).ready(function () {
     if (!JSON.parse(localStorage.getItem("userData"))) {
         $("#modal").addClass("is-active");
 
-        $("#enter-btn").click(function () {
+        $("#modal").on("click", "#enter-btn", function () {
+            console.log("you clicked enter")
             if ($("#time").val() === "" || $("#loc").val() === "") {
                 $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
             } else {
@@ -310,7 +311,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxRestaurant = document.createElement("span")
                             boxRestaurant.textContent = (data.searchResults[i].name)
-                            $(boxRestaurant).addClass("button is-multiline is-light draggable");
+                            $(boxRestaurant).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxRestaurant);
                             $(function () {
                                 $(".draggable").draggable();
@@ -334,7 +335,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxAquarium = document.createElement("span")
                             boxAquarium.textContent = (data.searchResults[i].name)
-                            $(boxAquarium).addClass("button is-multiline is-light draggable");
+                            $(boxAquarium).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxAquarium);
                             $(function () {
                                 $(".draggable").draggable();
@@ -357,7 +358,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxIceCream = document.createElement("span")
                             boxIceCream.textContent = (data.searchResults[i].name)
-                            $(boxIceCream).addClass("button is-multiline is-light draggable");
+                            $(boxIceCream).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxIceCream);
                             $(function () {
                                 $(".draggable").draggable();
@@ -380,7 +381,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxBowling = document.createElement("span")
                             boxBowling.textContent = (data.searchResults[i].name)
-                            $(boxBowling).addClass("button is-multiline is-light draggable");
+                            $(boxBowling).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxBowling)
                             $(function () {
                                 $(".draggable").draggable();
@@ -403,7 +404,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxPools = document.createElement("span")
                             boxPools.textContent = (data.searchResults[i].name)
-                            $(boxPools).addClass("button is-multiline is-light draggable");
+                            $(boxPools).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxPools);
                             $(function () {
                                 $(".draggable").draggable();
@@ -426,7 +427,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxAmusParks = document.createElement("span")
                             boxAmusParks.textContent = (data.searchResults[i].name)
-                            $(boxAmusParks).addClass("button is-multiline is-light draggable");
+                            $(boxAmusParks).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxAmusParks);
                             $(function () {
                                 $(".draggable").draggable();
@@ -438,15 +439,15 @@ $(document).ready(function () {
                     })
                 console.log(amusementParkUrl);
             }
-            // buttons have to be included in this else statement for them to be able to be clicked on refresh (if refreshed and the buttons are already clicked it will be run multiple times because it is already in localStorage)
-            restaurantBtn.addEventListener('click', restaurants);
-            aquariumBtn.addEventListener('click', aquariums);
-            iceCreamBtn.addEventListener('click', iceCream);
-            bowlingBtn.addEventListener('click', bowling);
-            poolsBtn.addEventListener('click', pools);
-            amusementBtn.addEventListener('click', amusementPark);
-        }
 
+        }
+        // buttons have to be included in this else statement for them to be able to be clicked on refresh (if refreshed and the buttons are already clicked it will be run multiple times because it is already in localStorage)
+        restaurantBtn.addEventListener('click', restaurants);
+        aquariumBtn.addEventListener('click', aquariums);
+        iceCreamBtn.addEventListener('click', iceCream);
+        bowlingBtn.addEventListener('click', bowling);
+        poolsBtn.addEventListener('click', pools);
+        amusementBtn.addEventListener('click', amusementPark);
     }
 
 });
@@ -710,4 +711,24 @@ $(function () {
 //     document.getElementById('weather').append(sunnyIcon);
 //     document.getElementById('weather').append(sunny, sunnyAdvice);
 // }
+
+
+var closeBtn = document.getElementById('close')
+
+function removeStorage() {
+    console.log("you clicked remove storage")
+    localStorage.removeItem("weatherInfo");
+    localStorage.removeItem("userData");
+    $("#weather").empty()
+    // $(".droppable").empty()
+    $(".schedblock").remove()
+    $(".activity-btn").remove()
+
+    if (!JSON.parse(localStorage.getItem("userData"))) {
+        $("#modal").addClass("is-active");
+    }
+}
+
+closeBtn.addEventListener('click', removeStorage);
+
 

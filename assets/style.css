@@ -138,5 +138,11 @@ nav {
     color: lightgrey;
     font-weight: 600;
 }
+
+#close {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
     /* justify-content: left;           *THIS IS STIL WONK* /
 
