@@ -203,7 +203,7 @@ var sitter;
 var container = document.getElementById("main-container");
 var sched = document.createElement("div");
 
-$(sched).addClass("box droppable");
+$(sched).addClass("droppable");
 
 container.appendChild(sched);
 
@@ -219,9 +219,6 @@ function populate() {
         name: $("#babysitter").val()
     }
 
-
-
-
     console.log(hours);
     console.log(place);
     console.log(sitter);
@@ -229,9 +226,9 @@ function populate() {
         var timeblock = document.createElement("div")
         $(timeblock).addClass("columns")
         sched.appendChild(timeblock);
-
+        //line 221 changed from "is-narrow" to "is-1" --what does that do? ***********************
         var time = document.createElement("div");
-        $(time).addClass("column is-1 hourblock schedblock");
+        $(time).addClass("column is-narrow hourblock schedblock");
         timeblock.appendChild(time);
 
         var block = document.createElement("div");
