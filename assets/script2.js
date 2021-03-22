@@ -151,16 +151,26 @@ function amusementPark() {
 }
 
 $(document).ready(function () {
-    $("#modal").addClass("is-active");
+    if (!JSON.parse(localStorage.getItem("userData")).hour) {
+        $("#modal").addClass("is-active");
+    }
     $("#enter-btn").click(function () {
         if ($("#time").val() === "" || $("#loc").val() === "") {
             $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
         } else {
+            var userInput = {
+                hour: $("#time").val(),
+                location: $("#loc").val(),
+                name: $("#babysitter").val()
+            }
+            localStorage.setItem("userData", JSON.stringify(userInput));
+
             $("#modal").removeClass("is-active");
-            populate();
+            populate()
         }
     });
 });
+
 
 // $(document).ready(function () {
 //     $("#modal").addClass("is-active");
@@ -239,8 +249,10 @@ function populate() {
     }
 
     // setting user input to local storage and displaying name
+    if (!localStorage.getItem("userData")) {
+        localStorage.setItem("userData", JSON.stringify(userInput));
+    }
 
-    localStorage.setItem("userData", JSON.stringify(userInput));
     var userData = JSON.parse(localStorage.getItem(userData));
     console.log(userInput.name);
     if (!userInput.name) {
@@ -253,6 +265,7 @@ function populate() {
         document.getElementById('weather').append(babySitter)
         console.log(userInput);
     }
+
     // weather api call with place pulled from modal
     place = $("#loc").val();
     var api = "http://api.weatherapi.com/v1/current.json?key=02957dd1b8bc47448a7215119211803&q=" + place + "&aqi=no";
@@ -363,6 +376,7 @@ function populate() {
 
     }
     call()
+
 }
 populate()
 
