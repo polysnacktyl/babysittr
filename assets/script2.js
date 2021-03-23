@@ -21,7 +21,7 @@ function restaurants() {
                 console.log(data.searchResults[i].name)
                 var boxRestaurant = document.createElement("span")
                 boxRestaurant.textContent = (data.searchResults[i].name)
-                $(boxRestaurant).addClass("button is-multiline is-light draggable");
+                $(boxRestaurant).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxRestaurant);
                 $(function () {
                     $(".draggable").draggable();
@@ -45,7 +45,7 @@ function aquariums() {
                 console.log(data.searchResults[i].name)
                 var boxAquarium = document.createElement("span")
                 boxAquarium.textContent = (data.searchResults[i].name)
-                $(boxAquarium).addClass("button is-multiline is-light draggable");
+                $(boxAquarium).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxAquarium);
                 $(function () {
                     $(".draggable").draggable();
@@ -68,7 +68,7 @@ function iceCream() {
                 console.log(data.searchResults[i].name)
                 var boxIceCream = document.createElement("span")
                 boxIceCream.textContent = (data.searchResults[i].name)
-                $(boxIceCream).addClass("button is-multiline is-light draggable");
+                $(boxIceCream).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxIceCream);
                 $(function () {
                     $(".draggable").draggable();
@@ -91,7 +91,7 @@ function bowling() {
                 console.log(data.searchResults[i].name)
                 var boxBowling = document.createElement("span")
                 boxBowling.textContent = (data.searchResults[i].name)
-                $(boxBowling).addClass("button is-multiline is-light draggable");
+                $(boxBowling).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxBowling)
                 $(function () {
                     $(".draggable").draggable();
@@ -114,7 +114,7 @@ function pools() {
                 console.log(data.searchResults[i].name)
                 var boxPools = document.createElement("span")
                 boxPools.textContent = (data.searchResults[i].name)
-                $(boxPools).addClass("button is-multiline is-light draggable");
+                $(boxPools).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxPools);
                 $(function () {
                     $(".draggable").draggable();
@@ -137,7 +137,7 @@ function amusementPark() {
                 console.log(data.searchResults[i].name)
                 var boxAmusParks = document.createElement("span")
                 boxAmusParks.textContent = (data.searchResults[i].name)
-                $(boxAmusParks).addClass("button is-multiline is-light draggable");
+                $(boxAmusParks).addClass("button activity-btn is-multiline is-light draggable");
                 sidebar.appendChild(boxAmusParks);
                 $(function () {
                     $(".draggable").draggable();
@@ -156,7 +156,8 @@ $(document).ready(function () {
     if (!JSON.parse(localStorage.getItem("userData"))) {
         $("#modal").addClass("is-active");
 
-        $("#enter-btn").click(function () {
+        $("#modal").on("click", "#enter-btn", function () {
+            console.log("you clicked enter")
             if ($("#time").val() === "" || $("#loc").val() === "") {
                 $("#modaltxt").append("<p class='import'>Please enter a number of hours and location</p>");
             } else {
@@ -193,7 +194,7 @@ $(document).ready(function () {
         if (weatherInfo.weatherCondition == 'Sunny') {
             var sunny = document.createElement('p');
             var sunnyIcon = document.createElement('img');
-            var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
+            var sunnyAdvice = "It's a lovely day to play outside. Don't forget the sunscreen!";
             sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
             sunny.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(sunnyIcon);
@@ -204,7 +205,7 @@ $(document).ready(function () {
         if (weatherInfo.weatherCondition == 'Clear') {
             var clear = document.createElement('p');
             var clearIcon = document.createElement('img');
-            var clearAdvice = "";
+            var clearAdvice = "Clear skies, clear minds. Practice some calming breathing exercises.";
             clearIcon.src = "./assets/images/weather-icons/clearnight.png";
             clear.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(clearIcon);
@@ -215,7 +216,7 @@ $(document).ready(function () {
         if (weatherClouds.includes(weatherInfo.weatherCode)) {
             var clouds = document.createElement('p');
             var cloudsIcon = document.createElement('img');
-            var cloudsAdvice = "";
+            var cloudsAdvice = "It's a great day for board games.";
             cloudsIcon.src = "./assets/images/weather-icons/clouds.png";
             clouds.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(cloudsIcon);
@@ -226,7 +227,7 @@ $(document).ready(function () {
         if (weatherRains.includes(weatherInfo.weatherCode)) {
             var rains = document.createElement('p');
             var rainIcon = document.createElement('img')
-            var rainsAdvice = "time to stomp some puddles! don't forget boots and an umbrella!";
+            var rainsAdvice = "Who wants to go puddle stomping? Don't forget your rain boots! ";
             rainIcon.src = "./assets/images/weather-icons/rain.png"
             rains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(rainIcon);
@@ -237,7 +238,7 @@ $(document).ready(function () {
         if (weatherDangerRains.includes(weatherInfo.weatherCode)) {
             var dangerRains = document.createElement('p');
             var stormIcon = document.createElement('img')
-            var dangerRainsAdvice = "hazardous wet conditions--play some inside games today";
+            var dangerRainsAdvice = "A perfect day to build a blanket fort.";
             stormIcon.src = "./assets/images/weather-icons/storm.png"
             dangerRains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(stormIcon);
@@ -248,7 +249,7 @@ $(document).ready(function () {
         if (weatherFreezingRains.includes(weatherInfo.weatherCode)) {
             var freezyRains = document.createElement('p');
             var snowRainIcon = document.createElement('img')
-            var freezyRainsAdvice = "it's freezing and wet outside today--be careful!";
+            var freezyRainsAdvice = "Some art supplies and a pad of paper could brighten this day.";
             stormIcon.src = "./assets/images/weather-icons/snowandrain.png"
             freezyRains.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(snowRainIcon);
@@ -259,7 +260,7 @@ $(document).ready(function () {
         if (weatherSnows.includes(weatherInfo.weatherCode)) {
             var snow = document.createElement('p');
             var snowIcon = document.createElement('img')
-            var snowAdvice = "it's snowy out today, so bundle up and don't forget your mittens!";
+            var snowAdvice = "Grab some blankets and have cozy story time.";
             stormIcon.src = "./assets/images/weather-icons/snow.png"
             snows.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(snowIcon);
@@ -270,7 +271,7 @@ $(document).ready(function () {
         if (weatherDangerSnows.includes(weatherInfo.weatherCode)) {
             var dangerSnows = document.createElement('p');
             var dangerSnowsIcon = document.createElement('img')
-            var dangerSnowsAdvice = "today would be a great day for staying home and making hot cocoa";
+            var dangerSnowsAdvice = "Today calls for hot cocoa.";
             stormIcon.src = "./assets/images/weather-icons/snowstorm.png"
             snows.textContent = weatherInfo.weatherLocation + ': ' + weatherInfo.weatherTemp + '°, ' + weatherInfo.weatherCondition + '.';
             document.getElementById('weather').append(dangerSnowsIcon);
@@ -310,7 +311,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxRestaurant = document.createElement("span")
                             boxRestaurant.textContent = (data.searchResults[i].name)
-                            $(boxRestaurant).addClass("button is-multiline is-light draggable");
+                            $(boxRestaurant).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxRestaurant);
                             $(function () {
                                 $(".draggable").draggable();
@@ -334,7 +335,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxAquarium = document.createElement("span")
                             boxAquarium.textContent = (data.searchResults[i].name)
-                            $(boxAquarium).addClass("button is-multiline is-light draggable");
+                            $(boxAquarium).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxAquarium);
                             $(function () {
                                 $(".draggable").draggable();
@@ -357,7 +358,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxIceCream = document.createElement("span")
                             boxIceCream.textContent = (data.searchResults[i].name)
-                            $(boxIceCream).addClass("button is-multiline is-light draggable");
+                            $(boxIceCream).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxIceCream);
                             $(function () {
                                 $(".draggable").draggable();
@@ -380,7 +381,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxBowling = document.createElement("span")
                             boxBowling.textContent = (data.searchResults[i].name)
-                            $(boxBowling).addClass("button is-multiline is-light draggable");
+                            $(boxBowling).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxBowling)
                             $(function () {
                                 $(".draggable").draggable();
@@ -403,7 +404,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxPools = document.createElement("span")
                             boxPools.textContent = (data.searchResults[i].name)
-                            $(boxPools).addClass("button is-multiline is-light draggable");
+                            $(boxPools).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxPools);
                             $(function () {
                                 $(".draggable").draggable();
@@ -426,7 +427,7 @@ $(document).ready(function () {
                             console.log(data.searchResults[i].name)
                             var boxAmusParks = document.createElement("span")
                             boxAmusParks.textContent = (data.searchResults[i].name)
-                            $(boxAmusParks).addClass("button is-multiline is-light draggable");
+                            $(boxAmusParks).addClass("button activity-btn is-multiline is-light draggable");
                             sidebar.appendChild(boxAmusParks);
                             $(function () {
                                 $(".draggable").draggable();
@@ -438,15 +439,15 @@ $(document).ready(function () {
                     })
                 console.log(amusementParkUrl);
             }
-            // buttons have to be included in this else statement for them to be able to be clicked on refresh (if refreshed and the buttons are already clicked it will be run multiple times because it is already in localStorage)
-            restaurantBtn.addEventListener('click', restaurants);
-            aquariumBtn.addEventListener('click', aquariums);
-            iceCreamBtn.addEventListener('click', iceCream);
-            bowlingBtn.addEventListener('click', bowling);
-            poolsBtn.addEventListener('click', pools);
-            amusementBtn.addEventListener('click', amusementPark);
-        }
 
+        }
+        // buttons have to be included in this else statement for them to be able to be clicked on refresh (if refreshed and the buttons are already clicked it will be run multiple times because it is already in localStorage)
+        restaurantBtn.addEventListener('click', restaurants);
+        aquariumBtn.addEventListener('click', aquariums);
+        iceCreamBtn.addEventListener('click', iceCream);
+        bowlingBtn.addEventListener('click', bowling);
+        poolsBtn.addEventListener('click', pools);
+        amusementBtn.addEventListener('click', amusementPark);
     }
 
 });
@@ -560,7 +561,7 @@ function populate() {
                 if (data.current.condition.text == 'Sunny') {
                     var sunny = document.createElement('p');
                     var sunnyIcon = document.createElement('img');
-                    var sunnyAdvice = "Why not go play outside? Don't forget the sunscreen!";
+                    var sunnyAdvice = "It's a lovely day to play outside. Don't forget the sunscreen!";
                     sunnyIcon.src = "./assets/images/weather-icons/sunny.png";
                     sunny.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(sunnyIcon);
@@ -571,7 +572,7 @@ function populate() {
                 if (data.current.condition.text == 'Clear') {
                     var clear = document.createElement('p');
                     var clearIcon = document.createElement('img');
-                    var clearAdvice = "";
+                    var clearAdvice = "Clear skies, clear minds. Practice some calming breathing exercises.";
                     clearIcon.src = "./assets/images/weather-icons/clearnight.png";
                     clear.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(clearIcon);
@@ -582,7 +583,7 @@ function populate() {
                 if (weatherClouds.includes(data.current.condition.code)) {
                     var clouds = document.createElement('p');
                     var cloudsIcon = document.createElement('img');
-                    var cloudsAdvice = "";
+                    var cloudsAdvice = "It's a great day for board games.";
                     cloudsIcon.src = "./assets/images/weather-icons/clouds.png";
                     clouds.textContent = data.location.name + ': ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(cloudsIcon);
@@ -593,7 +594,7 @@ function populate() {
                 if (weatherRains.includes(data.current.condition.code)) {
                     var rains = document.createElement('p');
                     var rainIcon = document.createElement('img')
-                    var rainsAdvice = "time to stomp some puddles! don't forget boots and an umbrella!";
+                    var rainsAdvice = "Who wants to go puddle stomping? Don't forget your rain boots! ";
                     rainIcon.src = "./assets/images/weather-icons/rain.png"
                     rains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(rainIcon);
@@ -604,7 +605,7 @@ function populate() {
                 if (weatherDangerRains.includes(data.current.condition.code)) {
                     var dangerRains = document.createElement('p');
                     var stormIcon = document.createElement('img')
-                    var dangerRainsAdvice = "hazardous wet conditions--play some inside games today";
+                    var dangerRainsAdvice = "A perfect day to build a blanket fort.";
                     stormIcon.src = "./assets/images/weather-icons/storm.png"
                     dangerRains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(stormIcon);
@@ -615,7 +616,7 @@ function populate() {
                 if (weatherFreezingRains.includes(data.current.condition.code)) {
                     var freezyRains = document.createElement('p');
                     var snowRainIcon = document.createElement('img')
-                    var freezyRainsAdvice = "it's freezing and wet outside today--be careful!";
+                    var freezyRainsAdvice = "Some art supplies and a pad of paper could brighten this day.";
                     stormIcon.src = "./assets/images/weather-icons/snowandrain.png"
                     freezyRains.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(snowRainIcon);
@@ -626,7 +627,7 @@ function populate() {
                 if (weatherSnows.includes(data.current.condition.code)) {
                     var snow = document.createElement('p');
                     var snowIcon = document.createElement('img')
-                    var snowAdvice = "it's snowy out today, so bundle up and don't forget your mittens!";
+                    var snowAdvice = "Grab some blankets and have cozy story time.";
                     stormIcon.src = "./assets/images/weather-icons/snow.png"
                     snows.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(snowIcon);
@@ -637,7 +638,7 @@ function populate() {
                 if (weatherDangerSnows.includes(data.current.condition.code)) {
                     var dangerSnows = document.createElement('p');
                     var dangerSnowsIcon = document.createElement('img')
-                    var dangerSnowsAdvice = "today would be a great day for staying home and making hot cocoa";
+                    var dangerSnowsAdvice = "Today calls for hot cocoa.";
                     stormIcon.src = "./assets/images/weather-icons/snowstorm.png"
                     snows.textContent = data.location.name + ', ' + data.current.temp_f + '°, ' + data.current.condition.text + '.';
                     document.getElementById('weather').append(dangerSnowsIcon);
@@ -710,4 +711,24 @@ $(function () {
 //     document.getElementById('weather').append(sunnyIcon);
 //     document.getElementById('weather').append(sunny, sunnyAdvice);
 // }
+
+
+var closeBtn = document.getElementById('close')
+
+function removeStorage() {
+    console.log("you clicked remove storage")
+    localStorage.removeItem("weatherInfo");
+    localStorage.removeItem("userData");
+    $("#weather").empty()
+    // $(".droppable").empty()
+    $(".schedblock").remove()
+    $(".activity-btn").remove()
+
+    if (!JSON.parse(localStorage.getItem("userData"))) {
+        $("#modal").addClass("is-active");
+    }
+}
+
+closeBtn.addEventListener('click', removeStorage);
+
 
