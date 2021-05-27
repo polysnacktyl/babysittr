@@ -13,9 +13,6 @@ git push
 
 [Live Application](https://github.com/polysnacktyl/project-1)
 
-Our page is live on Github!
-https://polysnacktyl.github.io/project-1/
-
 
   <img src="assets/images/babysittr demo.png">
 
